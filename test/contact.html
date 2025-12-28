@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Liên hệ - TechZone</title>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">TechZone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        Giỏ hàng (<span id="cartCount">0</span>)
+                    </button>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#authModal" id="authBtn">Đăng
+                        nhập</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="py-5">
+        <div class="container">
+                <h1 class="text-center mb-3">Liên hệ</h1>
+                <p class="text-center text-muted mb-5">Chúng tôi sẵn sàng hỗ trợ bạn — hãy gửi cho chúng tôi thông tin bên dưới.</p>
+
+                <div class="row g-4">
+                        <div class="col-lg-7">
+                                <div class="card p-4">
+                                        <h5 class="mb-3">Gửi tin nhắn</h5>
+                                        <form id="contactForm">
+                                                <div class="mb-3">
+                                                        <label class="form-label">Họ & Tên</label>
+                                                        <input type="text" class="form-control" id="contactName" placeholder="Nguyễn Văn A">
+                                                </div>
+                                                <div class="mb-3">
+                                                        <label class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="contactEmail" placeholder="you@example.com">
+                                                </div>
+                                                <div class="mb-3">
+                                                        <label class="form-label">Nội dung</label>
+                                                        <textarea class="form-control" id="contactMessage" rows="6" placeholder="Mô tả vấn đề của bạn..."></textarea>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">Hoặc gọi: <strong>0987654JQK</strong></small>
+                                                        <button type="submit" class="btn btn-primary">Gửi liên hệ</button>
+                                                </div>
+                                                <div id="contactAlert" class="mt-3" style="display:none"></div>
+                                        </form>
+                                </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                                <div class="card p-4 mb-4">
+                                        <h5 class="mb-3">Thông tin liên hệ</h5>
+                                        <p class="mb-1"><strong>Địa chỉ</strong></p>
+                                        <p class="text-muted">120 Yên Lãng,Đống Đa,Hà Nội</p>
+                                        <p class="mb-1"><strong>Email</strong></p>
+                                        <p class="text-muted">songbaimacau@techzone.gg</p>
+                                        <p class="mb-1"><strong>Hotline</strong></p>
+                                        <p class="text-muted">0987654JQK</p>
+                                </div>
+
+                                <div class="card p-0 overflow-hidden">
+                                        <div style="width:100%;height:220px;background:#e9ecef;display:flex;align-items:center;justify-content:center;color:#6c757d;">
+                                                Map placeholder
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Cart modal (used by main.js) -->
+    <div class="modal fade" id="cartModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Giỏ hàng</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="cartItems"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth modal (used by main.js) -->
+    <div class="modal fade" id="authModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Đăng ký / Đăng nhập</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="email" id="email" class="form-control mb-2" placeholder="Email">
+                    <input type="password" id="password" class="form-control mb-2" placeholder="Mật khẩu">
+                    <button class="btn btn-success w-100" onclick="register()">Đăng ký</button>
+                    <button class="btn btn-primary w-100 mt-2" onclick="login()">Đăng nhập</button>
+                    <p class="text-danger mt-2" id="authMsg"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
